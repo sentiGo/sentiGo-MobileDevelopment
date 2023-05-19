@@ -2,9 +2,13 @@
     <string name="app_name">sentiGo</string>
 
     <string name="text_login_image">Login image</string>
+    <string name="text_register_image">Register image</string>
     <string name="text_email">Email</string>
     <string name="text_password">Password</string>
     <string name="text_login">Login</string>
     <string name="text_dont_have_account">Tidak Punya akun?</string>
-    <string name="signup">Daftar</string>
+    <string name="text_signup">Sign Up</string>
+    <string name="text_username">Username</string>
+    <string name="ed_email_err">Must be a valid email</string>
+    <string name="password_6">Passwords cannot be less than 8</string>
 </resources>

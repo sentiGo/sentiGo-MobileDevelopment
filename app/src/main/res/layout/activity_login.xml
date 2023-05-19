@@ -8,7 +8,7 @@
     tools:context=".ui.login.LoginActivity">
 
     <ImageView
-        android:id="@+id/loginImage"
+        android:id="@+id/login_image"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:contentDescription="@string/text_login_image"
@@ -29,23 +29,26 @@
         android:layout_marginTop="35dp"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginImage"/>
+        app:layout_constraintTop_toBottomOf="@id/login_image"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_layout_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        app:startIconDrawable="@drawable/baseline_alternate_email_24"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_email">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.sentigo.bangkit.sentigoapp.ui.custom.EmailEditText
+            android:id="@+id/ed_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,9 +76,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_password">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.sentigo.bangkit.sentigoapp.ui.custom.PasswordEditText
+            android:id="@+id/ed_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/signup"
+        android:text="@string/text_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/text_view_signup"
