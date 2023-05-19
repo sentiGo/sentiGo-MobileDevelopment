@@ -74,4 +74,7 @@ dependencies {
     implementation 'androidx.room:room-paging:2.6.0-alpha01'
     implementation 'androidx.room:room-ktx:2.6.0-alpha01'
     kapt 'androidx.room:room-compiler:2.6.0-alpha01'
+
+    // login dengan akun google
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
 }
