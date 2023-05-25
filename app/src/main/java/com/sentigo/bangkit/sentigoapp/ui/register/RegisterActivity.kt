@@ -22,7 +22,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        factory = ViewModelFactory.getInstance()
+        factory = ViewModelFactory.getInstance(this)
 
         registerViewModel.registerResponse.observe(this) { user ->
             if (user != null) {

@@ -3,15 +3,19 @@ package com.sentigo.bangkit.sentigoapp.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import com.sentigo.bangkit.sentigoapp.data.remote.api.ApiService
 import com.sentigo.bangkit.sentigoapp.data.remote.response.LoginResult
 import com.sentigo.bangkit.sentigoapp.data.remote.response.RegisterResponse
 import com.sentigo.bangkit.sentigoapp.di.Result
+import com.sentigo.bangkit.sentigoapp.model.UserModel
+import com.sentigo.bangkit.sentigoapp.model.UserPreferences
 import org.json.JSONObject
 import retrofit2.HttpException
 
 class AppRepository(
     private val apiService: ApiService,
+    private val pref: UserPreferences
 ) {
 
     private val _loginResponse = MutableLiveData<Result<LoginResult>>(Result.Loading)
@@ -33,6 +37,23 @@ class AppRepository(
         }
     }
 
+    suspend fun saveUserPref(user: UserModel) {
+        pref.saveUser(user)
+    }
+
+    suspend fun setLocationPref(lat: Float, lon: Float) {
+        pref.setLocation(lat, lon)
+    }
+
+    suspend fun logout() {
+//        _loginResponse.value = null
+        pref.logout()
+    }
+
+    fun getUserPref(): LiveData<UserModel> {
+        return pref.getUser().asLiveData()
+    }
+
     suspend fun registerUser(username: String, email: String, password: String) {
         _registerResponse.value = Result.Loading
         try {
@@ -50,9 +71,10 @@ class AppRepository(
 
         fun getInstance(
             apiService: ApiService,
+            pref: UserPreferences
         ): AppRepository =
             instance ?: synchronized(this) {
-                instance ?: AppRepository(apiService)
+                instance ?: AppRepository(apiService, pref)
             }.also { instance = it }
     }
 }

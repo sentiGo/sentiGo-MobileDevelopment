@@ -25,9 +25,9 @@ class ViewModelFactory(private val pref: AppRepository) : ViewModelProvider.NewI
     companion object {
         @Volatile
         private var instance: ViewModelFactory? = null
-        fun getInstance(): ViewModelFactory =
+        fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.providerRepository())
+                instance ?: ViewModelFactory(Injection.providerRepository(context))
             }.also { instance = it }
     }
 }
