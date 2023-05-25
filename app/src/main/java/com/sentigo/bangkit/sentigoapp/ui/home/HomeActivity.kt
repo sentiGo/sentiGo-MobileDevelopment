@@ -1,5 +1,6 @@
 package com.sentigo.bangkit.sentigoapp.ui.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -11,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sentigo.bangkit.sentigoapp.R
 import com.sentigo.bangkit.sentigoapp.databinding.ActivityHomeBinding
 import com.sentigo.bangkit.sentigoapp.di.ViewModelFactory
+import com.sentigo.bangkit.sentigoapp.ui.login.LoginActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -24,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         factory = ViewModelFactory.getInstance(this)
 
-        setSupportActionBar(binding.toolbar)
+        supportActionBar?.hide()
 
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment)
@@ -34,5 +36,12 @@ class HomeActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarCompatActivity)
         navView.setupWithNavController(navController)
+
+        homeViewModel.getUser.observe(this) {user ->
+            if (!user.isLogin) {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
     }
 }

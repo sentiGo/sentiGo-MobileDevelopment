@@ -77,4 +77,6 @@ dependencies {
 
     // login dengan akun google
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0' // circle image
 }

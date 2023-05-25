@@ -1,10 +1,7 @@
 package com.sentigo.bangkit.sentigoapp.data.remote.api
 
-import com.sentigo.bangkit.sentigoapp.data.remote.response.LoginResponse
-import com.sentigo.bangkit.sentigoapp.data.remote.response.RegisterResponse
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import com.sentigo.bangkit.sentigoapp.data.remote.response.*
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -22,4 +19,21 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String,
     ) : RegisterResponse
+
+    @GET("user/{id}")
+    suspend fun getUser(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ) : UserResponse
+
+    @GET("destinasi")
+    suspend fun getRatingDestinasi(
+        @Header("Authorization") token: String
+    ) : RatingDestinasiResponse
+
+    @GET("detail/{id_destinasi}")
+    suspend fun getDestinasiDetail(
+        @Header("Authorization") token: String,
+        @Path("id_destinasi") id: Int
+    ) : DestinasiDetailResponse
 }
