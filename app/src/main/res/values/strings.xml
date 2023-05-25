@@ -15,4 +15,12 @@
     <string name="empty_email">Enter Email</string>
     <string name="empty_password">Enter Password</string>
     <string name="empty_username">Enter Username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="text_home">Home</string>
+    <string name="text_find">Find</string>
+    <string name="text_favorite">Favorite</string>
+    <string name="text_profile">Profile</string>
+
 </resources>

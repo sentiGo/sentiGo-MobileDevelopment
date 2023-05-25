@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.sentigo.bangkit.sentigoapp.ui.home.HomeFragment"
+        android:label="@string/text_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_find"
+        android:name="com.sentigo.bangkit.sentigoapp.ui.find.FindFragment"
+        android:label="@string/text_find"
+        tools:layout="@layout/fragment_find" />
+
+    <fragment
+        android:id="@+id/nav_favorite"
+        android:name="com.sentigo.bangkit.sentigoapp.ui.favorite.FavoriteFragment"
+        android:label="@string/text_favorite"
+        tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.sentigo.bangkit.sentigoapp.ui.profile.ProfileFragment"
+        android:label="@string/text_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

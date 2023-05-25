@@ -1,4 +1,7 @@
 package com.sentigo.bangkit.sentigoapp.ui.home
 
-class HomeViewModel {
+import androidx.lifecycle.ViewModel
+import com.sentigo.bangkit.sentigoapp.data.AppRepository
+
+class HomeViewModel(private val repo: AppRepository) : ViewModel() {
 }
