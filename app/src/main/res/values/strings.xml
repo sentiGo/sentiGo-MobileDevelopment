@@ -25,7 +25,14 @@
     <string name="text_profile">Profile</string>
     <string name="text_setting_button">setting_button</string>
     <string name="text_change_photo_button">Change Photo</string>
+    <string name="text_name">Name</string>
+    <string name="text_city">City</string>
+    <string name="text_rating">4.5</string>
+
+    <string name="text_rating_text">Rating</string>
+    <string name="text_location">Location</string>
 
     <string name="exemple_email">emailmu@mail.com</string>
+    <string name="text_title_rekomendasi">Tempat Menarik Untuk Mu!</string>
 
 </resources>

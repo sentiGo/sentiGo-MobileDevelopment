@@ -64,9 +64,7 @@ class ProfileFragment : Fragment() {
     private fun setUserData(user: UserData) {
         binding.tvEmail.text = user.email
         binding.tvUsername.text = user.username
-        Glide.with(requireActivity())
-            .load(user.img)
-            .into(binding.profileImage)
+        changePhoto(user.img)
     }
 
     private fun setupAction() {
