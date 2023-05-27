@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repo: AppRepository) : ViewModel() {
 
-    val loginResponse: LiveData<Result<LoginResult>> get() = repo.loginResponse
+    val loginResponse: LiveData<Result<LoginResult>?> get() = repo.loginResponse
     val getUser = repo.getUserPref()
 
     fun userLogin(email: String, password: String) {

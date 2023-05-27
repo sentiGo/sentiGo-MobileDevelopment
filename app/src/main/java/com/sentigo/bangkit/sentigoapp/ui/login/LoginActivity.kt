@@ -30,6 +30,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         factory = ViewModelFactory.getInstance(this)
 
+        supportActionBar?.hide()
+
         setupViewModel()
         setupAction()
     }

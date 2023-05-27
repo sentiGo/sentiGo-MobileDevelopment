@@ -17,8 +17,8 @@ class AppRepository(
     private val pref: UserPreferences
 ) {
 
-    private val _loginResponse = MutableLiveData<Result<LoginResult>>(Result.Loading)
-    val loginResponse: LiveData<Result<LoginResult>> get() = _loginResponse
+    private val _loginResponse = MutableLiveData<Result<LoginResult>?>(Result.Loading)
+    val loginResponse: LiveData<Result<LoginResult>?> get() = _loginResponse
 
     private val _registerResponse = MutableLiveData<Result<RegisterResponse>>(Result.Loading)
     val registerResponse: LiveData<Result<RegisterResponse>> get() = _registerResponse
@@ -62,7 +62,7 @@ class AppRepository(
     suspend fun getListRatingDestinasi(token: String) {
         _listHomeDestinasi.value = Result.Loading
         try {
-            val response = apiService.getRatingDestinasi(token)
+            val response = apiService.getRatingDestinasi("Bearer $token")
             _listHomeDestinasi.value = Result.Success(response.listDestinasi)
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }
@@ -75,9 +75,12 @@ class AppRepository(
     suspend fun getUser(token: String, id: Int) {
         _userResponse.value = Result.Loading
         try {
-            val response = apiService.getUser(token, id)
-            _userResponse.value = Result.Success(response.userData)
+            if (id != 0) {
+                val response = apiService.getUser("Bearer $token", id)
+                _userResponse.value = Result.Success(response.userData)
+            }
         } catch (e: HttpException) {
+            Log.d("AppRepository", e.response().toString())
             val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }
             _userResponse.postValue(error?.getString("message")?.let { Result.Error(it) })
         } catch (e: Exception) {
@@ -88,7 +91,7 @@ class AppRepository(
     suspend fun getDestinasiDetail(token: String, id: Int) {
         _detailDestinasiResponse.value = Result.Loading
         try {
-            val response = apiService.getDestinasiDetail(token, id)
+            val response = apiService.getDestinasiDetail("Bearer $token", id)
             _detailDestinasiResponse.value = Result.Success(response.detailDestinasi)
         }catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }
@@ -107,6 +110,7 @@ class AppRepository(
     }
 
     suspend fun logout() {
+        _loginResponse.value = null
         pref.logout()
     }
 

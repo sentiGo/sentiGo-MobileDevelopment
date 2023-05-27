@@ -32,5 +32,8 @@ data class ListDestinasiItem(
 	val id: Int,
 
 	@field:SerializedName("lat")
-	val lat: Double
+	val lat: Double,
+
+	@field:SerializedName("city")
+	val city: String
 )
