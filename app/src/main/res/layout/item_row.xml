@@ -3,12 +3,13 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
-        android:layout_width="165dp"
-        android:layout_height="245dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         style="?attr/materialCardViewFilledStyle"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toTopOf="parent"
@@ -32,13 +33,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="8dp">
 
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/text_name"
+                    android:textStyle="bold"
+                    android:lines="1"
                     android:textAppearance="?attr/textAppearanceTitleMedium"/>
 
                 <TextView
@@ -51,7 +56,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -64,6 +70,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="@string/text_rating"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
                         android:textAppearance="?attr/textAppearanceBodyMedium"/>
 
                 </LinearLayout>

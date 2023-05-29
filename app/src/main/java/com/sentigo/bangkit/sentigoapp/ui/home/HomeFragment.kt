@@ -36,8 +36,7 @@ class HomeFragment : Fragment() {
 
         factory = ViewModelFactory.getInstance(requireActivity())
 
-        // GridLayoutManager(requireActivity(), 2)
-        val layoutManager = LinearLayoutManager(requireActivity())
+        val layoutManager = GridLayoutManager(requireActivity(), 2)
         binding.rvItems.layoutManager = layoutManager
 
         homeViewModel.getUser.observe(viewLifecycleOwner) {
@@ -67,8 +66,6 @@ class HomeFragment : Fragment() {
 
     private fun setDestinasiData(listDestinasi: List<ListDestinasiItem>) {
         val data = ArrayList(listDestinasi)
-        Log.d("HomeFragment", listDestinasi.size.toString())
-        Log.d("HomeFragment", listDestinasi[1].toString())
         val adapter = DestinasiAdapter(data)
         binding.rvItems.adapter = adapter
     }
