@@ -1,5 +1,6 @@
 package com.sentigo.bangkit.sentigoapp.ui.home
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sentigo.bangkit.sentigoapp.data.remote.response.ListDestinasiItem
 import com.sentigo.bangkit.sentigoapp.databinding.ItemRowBinding
+import com.sentigo.bangkit.sentigoapp.ui.detail.DetailActivity
 
 class DestinasiAdapter(
     private val listDestinasi: List<ListDestinasiItem>
@@ -43,8 +45,9 @@ class DestinasiAdapter(
             tvRating.text = item.rating.toString()
 
             itemView.setOnClickListener {
-                // pindah ke detail destinasi ntar
-                Toast.makeText(itemView.context, item.name, Toast.LENGTH_SHORT).show()
+                val intent = Intent(itemView.context, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_DESTINASI, item.id)
+                itemView.context.startActivity(intent)
             }
         }
     }
