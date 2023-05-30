@@ -7,7 +7,10 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.sentigo.bangkit.sentigoapp.R
+import com.sentigo.bangkit.sentigoapp.data.local.entity.FavoriteEntity
 import com.sentigo.bangkit.sentigoapp.data.remote.response.DetailDestinasi
 import com.sentigo.bangkit.sentigoapp.databinding.ActivityDetailBinding
 import com.sentigo.bangkit.sentigoapp.di.ViewModelFactory
@@ -18,6 +21,8 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var factory: ViewModelFactory
     private val detailViewModel: DetailViewModel by viewModels { factory }
+
+    private lateinit var fav: FavoriteEntity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +57,43 @@ class DetailActivity : AppCompatActivity() {
             }
         }
 
+        detailViewModel.getFavoriteDb().observe(this) {
+            setFavorite(it, id)
+        }
+
         setupAction()
+    }
+
+    private fun setFavorite(data: List<FavoriteEntity>, id: Int) {
+        val favorite = data.any { it.id == id }
+        setFavoriteIcon(favorite)
+
+        binding.btnFavorite.setOnClickListener {
+            if (!favorite) {
+                detailViewModel.saveFavoriteDb(fav)
+                showToast(getString(R.string.add_favorite))
+            }
+            else {
+                detailViewModel.deleteFavoriteDb(id)
+                showToast(getString(R.string.delete_favorite))
+            }
+        }
+    }
+
+    private fun setFavoriteIcon(isFavorite: Boolean) {
+        binding.btnFavorite.apply {
+            if (isFavorite) {
+                setImageDrawable(ContextCompat.getDrawable(
+                    this@DetailActivity,
+                    R.drawable.full_favorite
+                ))
+            } else {
+                setImageDrawable(ContextCompat.getDrawable(
+                    this@DetailActivity,
+                    R.drawable.outline_favorite
+                ))
+            }
+        }
     }
 
     private fun setData(item: DetailDestinasi) {
@@ -61,6 +102,15 @@ class DetailActivity : AppCompatActivity() {
         binding.tvName.text = item.name
         binding.tvDesc.text = item.description
         binding.tvRating.text = item.rating.toString()
+
+        fav = FavoriteEntity(
+            item.id,
+            item.name,
+            item.rating,
+            item.city,
+            item.img,
+            true
+        )
 
         when (item.category) {
             "Tempat Nongkrong" -> binding.tvCategory.chipText = "Caffe"
@@ -77,6 +127,10 @@ class DetailActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             finish()
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     companion object {

@@ -37,4 +37,9 @@
     <string name="text_about">About</string>
     <string name="text_show_map">Show Location</string>
     <string name="text_address">Address</string>
+
+    <string name="delete_favorite">Remove from Favorite</string>
+    <string name="add_favorite">Add to Favorite</string>
+    <string name="text_favorite_place">Your Favorite Place!</string>
+    <string name="empty_data">Empty Data</string>
 </resources>

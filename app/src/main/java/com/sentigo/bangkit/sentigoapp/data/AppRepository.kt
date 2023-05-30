@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import com.sentigo.bangkit.sentigoapp.data.local.database.FavoriteDao
+import com.sentigo.bangkit.sentigoapp.data.local.entity.FavoriteEntity
 import com.sentigo.bangkit.sentigoapp.data.remote.api.ApiService
 import com.sentigo.bangkit.sentigoapp.data.remote.response.*
 import com.sentigo.bangkit.sentigoapp.di.Result
@@ -14,7 +16,8 @@ import retrofit2.HttpException
 
 class AppRepository(
     private val apiService: ApiService,
-    private val pref: UserPreferences
+    private val pref: UserPreferences,
+    private val db: FavoriteDao
 ) {
 
     private val _loginResponse = MutableLiveData<Result<LoginResult>?>(Result.Loading)
@@ -101,6 +104,16 @@ class AppRepository(
         }
     }
 
+    fun getFavoriteDb(): LiveData<List<FavoriteEntity>> = db.getFavoriteDb()
+
+    suspend fun saveFavoriteDb(data: FavoriteEntity) {
+        db.saveFavoriteDb(data)
+    }
+
+    suspend fun deleteFavoriteDb(id: Int) {
+        db.deleteFavoriteDb(id)
+    }
+
     suspend fun saveUserPref(user: UserModel) {
         pref.saveUser(user)
     }
@@ -124,10 +137,11 @@ class AppRepository(
 
         fun getInstance(
             apiService: ApiService,
-            pref: UserPreferences
+            pref: UserPreferences,
+            db: FavoriteDao
         ): AppRepository =
             instance ?: synchronized(this) {
-                instance ?: AppRepository(apiService, pref)
+                instance ?: AppRepository(apiService, pref, db)
             }.also { instance = it }
     }
 }

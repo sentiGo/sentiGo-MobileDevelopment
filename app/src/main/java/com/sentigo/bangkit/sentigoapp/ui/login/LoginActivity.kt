@@ -53,7 +53,6 @@ class LoginActivity : AppCompatActivity() {
                                 true
                             )
                         )
-                        Toast.makeText(this, user.data.username, Toast.LENGTH_SHORT).show()
                     }
 
                     is Result.Error -> {
