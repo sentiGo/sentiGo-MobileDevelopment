@@ -19,4 +19,10 @@ class HomeViewModel(private val repo: AppRepository) : ViewModel() {
             repo.getListRatingDestinasi(token)
         }
     }
+
+    fun setLocationPref(lat: Float, lon: Float) {
+        viewModelScope.launch {
+            repo.setLocationPref(lat, lon)
+        }
+    }
 }

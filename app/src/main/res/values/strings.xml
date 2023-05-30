@@ -42,4 +42,5 @@
     <string name="add_favorite">Add to Favorite</string>
     <string name="text_favorite_place">Your Favorite Place!</string>
     <string name="empty_data">Empty Data</string>
+    <string name="title_activity_map">MapActivity</string>
 </resources>

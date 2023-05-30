@@ -1,5 +1,6 @@
 package com.sentigo.bangkit.sentigoapp.ui.detail
 
+import android.content.Intent
 import com.sentigo.bangkit.sentigoapp.di.Result
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.sentigo.bangkit.sentigoapp.data.local.entity.FavoriteEntity
 import com.sentigo.bangkit.sentigoapp.data.remote.response.DetailDestinasi
 import com.sentigo.bangkit.sentigoapp.databinding.ActivityDetailBinding
 import com.sentigo.bangkit.sentigoapp.di.ViewModelFactory
+import com.sentigo.bangkit.sentigoapp.ui.map.MapActivity
 
 class DetailActivity : AppCompatActivity() {
 
@@ -23,6 +25,9 @@ class DetailActivity : AppCompatActivity() {
     private val detailViewModel: DetailViewModel by viewModels { factory }
 
     private lateinit var fav: FavoriteEntity
+    private var lat : Float? = null
+    private var lon : Float? = null
+    private var name : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,6 +117,10 @@ class DetailActivity : AppCompatActivity() {
             true
         )
 
+        lat = item.lat.toFloat()
+        lon = item.lon.toFloat()
+        name = item.name
+
         when (item.category) {
             "Tempat Nongkrong" -> binding.tvCategory.chipText = "Caffe"
             "Tempat Wisata" -> binding.tvCategory.chipText = "Vocation"
@@ -126,6 +135,15 @@ class DetailActivity : AppCompatActivity() {
     private fun setupAction() {
         binding.btnBack.setOnClickListener {
             finish()
+        }
+
+        binding.btnMap.setOnClickListener {
+            val intent = Intent(this@DetailActivity, MapActivity::class.java)
+            intent.putExtra(MapActivity.EXTRA_LAT, lat)
+            intent.putExtra(MapActivity.EXTRA_LON, lon)
+            intent.putExtra(MapActivity.EXTRA_NAME, name)
+
+            startActivity(intent)
         }
     }
 

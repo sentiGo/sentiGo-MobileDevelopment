@@ -41,8 +41,8 @@ class FavoriteFragment : Fragment() {
         binding.rvItems.layoutManager = layoutManager
 
         favViewModel.getFavoriteDb().observe(viewLifecycleOwner) { list ->
-            if (list.isNotEmpty()) setDestinasiData(list)
-            else binding.tvEmpty.visibility = View.VISIBLE
+            if (list.isEmpty()) binding.tvEmpty.visibility = View.VISIBLE
+            setDestinasiData(list)
         }
     }
 
