@@ -45,4 +45,6 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="text_story">Ceritakan Keinginan mu!</string>
     <string name="text_result">Result</string>
+    <string name="text_change_password">Change Password</string>
+    <string name="text_change_language">Change Language</string>
 </resources>
