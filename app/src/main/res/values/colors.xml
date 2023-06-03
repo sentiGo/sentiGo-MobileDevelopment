@@ -12,6 +12,9 @@
     <color name="dark_grey">#a0a0a0</color>
     <color name="red">#FF0000</color>
     <color name="blue_700">#1976D2</color>
+    <color name="blue_bg">#299be8</color>
+    <color name="blue_100">#ecf3fd</color>
+    <color name="blue_200">#d5e4fb</color>
 
     <color name="grey_54">#545454</color>
     <color name="red_like">#ff3040</color>

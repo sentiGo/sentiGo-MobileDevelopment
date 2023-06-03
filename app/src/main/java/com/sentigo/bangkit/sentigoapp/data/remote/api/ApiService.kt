@@ -36,4 +36,12 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id_destinasi") id: Int
     ) : DestinasiDetailResponse
+
+    @FormUrlEncoded
+    @POST("recomByDistance")
+    suspend fun getLocationDestinasi(
+        @Header("Authorization") token: String,
+        @Field("latitude") lat: Double?,
+        @Field("longitude") lon: Double?
+    ) : LocationDestinasiResponse
 }

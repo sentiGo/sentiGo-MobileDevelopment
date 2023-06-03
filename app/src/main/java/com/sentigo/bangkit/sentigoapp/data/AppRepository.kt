@@ -75,6 +75,19 @@ class AppRepository(
         }
     }
 
+    suspend fun getListLocationDestinasi(token: String, lat: Double?, lon: Double?) {
+        _listHomeDestinasi.value = Result.Loading
+        try {
+            val response = apiService.getLocationDestinasi("Bearer $token", lat, lon)
+            _listHomeDestinasi.value = Result.Success(response.listDestinasi)
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }
+            _listHomeDestinasi.postValue(error?.getString("message")?.let { Result.Error(it) })
+        } catch (e: Exception) {
+            _listHomeDestinasi.value = Result.Error(e.message.toString())
+        }
+    }
+
     suspend fun getUser(token: String, id: Int) {
         _userResponse.value = Result.Loading
         try {
@@ -118,7 +131,7 @@ class AppRepository(
         pref.saveUser(user)
     }
 
-    suspend fun setLocationPref(lat: Float, lon: Float) {
+    suspend fun setLocationPref(lat: Double, lon: Double) {
         pref.setLocation(lat, lon)
     }
 

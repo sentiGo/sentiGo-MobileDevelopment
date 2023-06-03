@@ -13,8 +13,8 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
                 it[ID_KEY] ?: 0,
                 it[TOKEN_KEY] ?:"",
                 it[STATE_KEY] ?: false,
-                it[LAT_KEY] ?: 0.0f,
-                it[LON_KEY] ?: 0.0f,
+                it[LAT_KEY] ?: 0.0,
+                it[LON_KEY] ?: 0.0,
             )
         }
     }
@@ -27,7 +27,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
-    suspend fun setLocation(lat: Float, lon: Float) {
+    suspend fun setLocation(lat: Double, lon: Double) {
         dataStore.edit { preferences ->
             preferences[LAT_KEY] = lat
             preferences[LON_KEY] = lon
@@ -47,8 +47,8 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         private val ID_KEY = intPreferencesKey("id")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val STATE_KEY = booleanPreferencesKey("state")
-        private val LAT_KEY = floatPreferencesKey("lat")
-        private val LON_KEY = floatPreferencesKey("lon")
+        private val LAT_KEY = doublePreferencesKey("lat")
+        private val LON_KEY = doublePreferencesKey("lon")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreferences {
             return INSTANCE ?: synchronized(this) {

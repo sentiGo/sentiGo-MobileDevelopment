@@ -43,4 +43,6 @@
     <string name="text_favorite_place">Your Favorite Place!</string>
     <string name="empty_data">Empty Data</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="text_story">Ceritakan Keinginan mu!</string>
+    <string name="text_result">Result</string>
 </resources>

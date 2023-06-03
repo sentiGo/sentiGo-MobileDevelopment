@@ -25,8 +25,8 @@ class DetailActivity : AppCompatActivity() {
     private val detailViewModel: DetailViewModel by viewModels { factory }
 
     private lateinit var fav: FavoriteEntity
-    private var lat : Float? = null
-    private var lon : Float? = null
+    private var lat : Double? = null
+    private var lon : Double? = null
     private var name : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +57,7 @@ class DetailActivity : AppCompatActivity() {
                     is Result.Error -> {
                         binding.progressBar.visibility = View.GONE
                         Toast.makeText(this, data.error, Toast.LENGTH_SHORT).show()
+                        Log.d("DetailActivity", data.error)
                     }
                 }
             }
@@ -117,13 +118,18 @@ class DetailActivity : AppCompatActivity() {
             true
         )
 
-        lat = item.lat.toFloat()
-        lon = item.lon.toFloat()
+        lat = item.lat
+        lon = item.lon
         name = item.name
 
         when (item.category) {
             "Tempat Nongkrong" -> binding.tvCategory.chipText = "Caffe"
+            "Tongkrongan" -> binding.tvCategory.chipText = "Caffe"
             "Tempat Wisata" -> binding.tvCategory.chipText = "Vocation"
+            "makam pahlawan" -> binding.tvCategory.chipText = "Cemetery"
+            "Wisata Edukasi" -> binding.tvCategory.chipText = "Education"
+            "Wisata Agro" -> binding.tvCategory.chipText = "Agritourism"
+            "Wisata Alam" -> binding.tvCategory.chipText = "Nature"
             else -> binding.tvCategory.chipText = item.category
         }
 

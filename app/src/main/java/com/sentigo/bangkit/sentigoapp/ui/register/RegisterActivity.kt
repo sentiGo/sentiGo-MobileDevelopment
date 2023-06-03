@@ -24,6 +24,8 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
         factory = ViewModelFactory.getInstance(this)
 
+        supportActionBar?.hide()
+
         registerViewModel.registerResponse.observe(this) { user ->
             if (user != null) {
                 when (user) {

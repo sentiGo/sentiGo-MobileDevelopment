@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment"
     android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp">
 
@@ -38,17 +37,21 @@
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/btn_rating"
             style="@style/Widget.Material3.Chip.Suggestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:chipBackgroundColor="@color/bg_chip_state_list"
             android:checked="true"
             android:text="@string/text_rating_text"
             app:chipCornerRadius="16dp" />
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/btn_location"
             style="@style/Widget.Material3.Chip.Suggestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:chipBackgroundColor="@color/bg_chip_state_list"
             android:text="@string/text_location"
             app:chipCornerRadius="16dp" />
 

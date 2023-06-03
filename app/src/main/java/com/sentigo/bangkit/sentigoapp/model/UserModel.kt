@@ -4,6 +4,6 @@ data class UserModel(
     val id: Int,
     val token: String,
     val isLogin: Boolean,
-    val lat: Float? = null,
-    val lot: Float? = null
+    val lat: Double? = null,
+    val lon: Double? = null
 )

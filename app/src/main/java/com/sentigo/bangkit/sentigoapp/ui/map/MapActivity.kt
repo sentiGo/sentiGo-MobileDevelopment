@@ -55,12 +55,12 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun addMarker() {
-        val lat = intent.getFloatExtra(EXTRA_LAT, 0.0f)
-        val lon = intent.getFloatExtra(EXTRA_LON, 0.0f)
+        val lat = intent.getDoubleExtra(EXTRA_LAT, 0.0)
+        val lon = intent.getDoubleExtra(EXTRA_LON, 0.0)
         val name = intent.getStringExtra(EXTRA_NAME)
 
-        val latLng = LatLng(lat.toDouble(), lon.toDouble())
-        val address = getAddressName(lat.toDouble(), lon.toDouble())
+        val latLng = LatLng(lat, lon)
+        val address = getAddressName(lat, lon)
         mMap.addMarker(MarkerOptions().position(latLng).title(name).snippet(address))
         boundsBuilder.include(latLng)
 

@@ -20,7 +20,13 @@ class HomeViewModel(private val repo: AppRepository) : ViewModel() {
         }
     }
 
-    fun setLocationPref(lat: Float, lon: Float) {
+    fun getListLocationDestinasi(token: String, lat: Double?, lon: Double?) {
+        viewModelScope.launch {
+            repo.getListLocationDestinasi(token, lat, lon)
+        }
+    }
+
+    fun setLocationPref(lat: Double, lon: Double) {
         viewModelScope.launch {
             repo.setLocationPref(lat, lon)
         }

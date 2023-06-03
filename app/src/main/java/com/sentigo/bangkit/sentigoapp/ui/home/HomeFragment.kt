@@ -29,6 +29,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    private var isFirstTime = true
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,7 +51,18 @@ class HomeFragment : Fragment() {
         getMyLocation()
 
         homeViewModel.getUser.observe(viewLifecycleOwner) {
-            homeViewModel.getListRatingDestinasi(it.token)
+            if (isFirstTime) {
+                isFirstTime = false
+                homeViewModel.getListRatingDestinasi(it.token)
+            }
+
+            binding.btnRating.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) homeViewModel.getListRatingDestinasi(it.token)
+            }
+
+            binding.btnLocation.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) homeViewModel.getListLocationDestinasi(it.token, it.lat, it.lon)
+            }
         }
 
         homeViewModel.listRatingDestinasi.observe(viewLifecycleOwner) { list ->
@@ -100,7 +113,7 @@ class HomeFragment : Fragment() {
         ) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 if (location != null) {
-                    homeViewModel.setLocationPref(location.latitude.toFloat(), location.longitude.toFloat())
+                    homeViewModel.setLocationPref(location.latitude, location.longitude)
                 } else {
                     showToast("Location is not found. Try Again")
                 }
