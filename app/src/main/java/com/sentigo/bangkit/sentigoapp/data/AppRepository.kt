@@ -35,6 +35,9 @@ class AppRepository(
     private val _detailDestinasiResponse = MutableLiveData<Result<DetailDestinasi>>(Result.Loading)
     val detailDestinasiResponse: LiveData<Result<DetailDestinasi>> get() = _detailDestinasiResponse
 
+    private val _changePasswordUserResponse = MutableLiveData<Result<RegisterResponse>>(Result.Loading)
+    val changePasswordUserResponse: LiveData<Result<RegisterResponse>> get() = _changePasswordUserResponse
+
     suspend fun loginUser(email: String, password: String) {
         _loginResponse.value = Result.Loading
         try {
@@ -114,6 +117,19 @@ class AppRepository(
             _detailDestinasiResponse.postValue(error?.getString("message")?.let { Result.Error(it) })
         } catch (e: Exception) {
             _detailDestinasiResponse.value = Result.Error(e.message.toString())
+        }
+    }
+
+    suspend fun putChangePassword(token: String, id: Int, oldPass: String?, newPass: String?) {
+        _changePasswordUserResponse.value = Result.Loading
+        try {
+            val response = apiService.changePasswordUser("Bearer $token", id, oldPass, newPass)
+            _changePasswordUserResponse.value = Result.Success(response)
+        } catch (e: HttpException){
+            val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }
+            _changePasswordUserResponse.postValue(error?.getString("message")?.let { Result.Error(it) })
+        } catch (e: Exception) {
+            _changePasswordUserResponse.value = Result.Error(e.message.toString())
         }
     }
 

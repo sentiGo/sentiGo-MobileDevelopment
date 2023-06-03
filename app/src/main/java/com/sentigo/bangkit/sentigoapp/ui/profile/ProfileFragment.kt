@@ -12,6 +12,7 @@ import com.sentigo.bangkit.sentigoapp.data.remote.response.UserData
 import com.sentigo.bangkit.sentigoapp.di.Result
 import com.sentigo.bangkit.sentigoapp.databinding.FragmentProfileBinding
 import com.sentigo.bangkit.sentigoapp.di.ViewModelFactory
+import com.sentigo.bangkit.sentigoapp.ui.profile.sheet.ChangePasswordFragment
 
 class ProfileFragment : Fragment() {
 
@@ -68,8 +69,15 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupAction() {
+
+        val changePasswordBottomSheet = ChangePasswordFragment()
+
         binding.btnLogout.setOnClickListener {
             profileViewModel.logout()
+        }
+
+        binding.btnChangePassword.setOnClickListener {
+            changePasswordBottomSheet.show(parentFragmentManager, ChangePasswordFragment.TAG)
         }
     }
 

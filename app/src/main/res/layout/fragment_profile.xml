@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/icon_image"
-                    android:layout_marginEnd="4dp" />
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -115,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/icon_password"
-                    android:layout_marginEnd="4dp" />
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -150,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/icon_edit"
-                    android:layout_marginEnd="4dp" />
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -185,7 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/icon_logout"
-                    android:layout_marginEnd="4dp" />
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:layout_width="0dp"

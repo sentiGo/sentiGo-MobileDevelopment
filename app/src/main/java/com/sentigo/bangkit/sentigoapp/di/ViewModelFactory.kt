@@ -10,6 +10,7 @@ import com.sentigo.bangkit.sentigoapp.ui.find.FindViewModel
 import com.sentigo.bangkit.sentigoapp.ui.home.HomeViewModel
 import com.sentigo.bangkit.sentigoapp.ui.login.LoginViewModel
 import com.sentigo.bangkit.sentigoapp.ui.profile.ProfileViewModel
+import com.sentigo.bangkit.sentigoapp.ui.profile.sheet.ChangePasswordSheetViewModel
 import com.sentigo.bangkit.sentigoapp.ui.register.RegisterViewModel
 
 class ViewModelFactory(private val pref: AppRepository) : ViewModelProvider.NewInstanceFactory() {
@@ -37,6 +38,9 @@ class ViewModelFactory(private val pref: AppRepository) : ViewModelProvider.NewI
             }
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
                 DetailViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(ChangePasswordSheetViewModel::class.java) -> {
+                ChangePasswordSheetViewModel(pref) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

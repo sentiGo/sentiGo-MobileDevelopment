@@ -44,4 +44,13 @@ interface ApiService {
         @Field("latitude") lat: Double?,
         @Field("longitude") lon: Double?
     ) : LocationDestinasiResponse
+
+    @FormUrlEncoded
+    @PUT("changePassword/{id}")
+    suspend fun changePasswordUser(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("oldPassword") oldPass: String?,
+        @Field("newPassword") newPass: String?
+    ) : RegisterResponse
 }

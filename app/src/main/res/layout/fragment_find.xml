@@ -59,16 +59,14 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:inputType="textMultiLine"
-            android:lines="5"
-
-            />
+            android:lines="5"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_result"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:text="@string/text_result"
         android:layout_margin="32dp"
         app:layout_constraintEnd_toEndOf="parent"
