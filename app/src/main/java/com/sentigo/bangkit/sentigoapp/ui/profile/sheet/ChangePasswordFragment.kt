@@ -73,7 +73,7 @@ class ChangePasswordFragment : BottomSheetDialogFragment() {
     }
 
     private fun setupAction() {
-
+        // TODO: tambah error kalau passwordnya kosong
         binding.btnChangePassword.setOnClickListener {
             val oldPassword = binding.edOldPassword.text.toString()
             val newPassword = binding.edNewPassword.text.toString()

@@ -9,9 +9,12 @@
     <string name="text_dont_have_account">Dont have account?</string>
     <string name="text_signup">Sign Up</string>
     <string name="text_logout">Log out</string>
+    <string name="text_logout_body">Are you sure you want to log out?</string>
     <string name="text_username">Username</string>
     <string name="ed_email_err">Must be a valid email</string>
     <string name="password_6">Passwords cannot be less than 8</string>
+    <string name="text_yes">Yes</string>
+    <string name="text_no">No</string>
 
     <string name="empty_email">Enter Email</string>
     <string name="empty_password">Enter Password</string>
@@ -24,7 +27,9 @@
     <string name="text_favorite">Favorite</string>
     <string name="text_profile">Profile</string>
     <string name="text_setting_button">setting_button</string>
-    <string name="text_change_photo_button">Change Photo</string>
+    <string name="text_change_photo_button">Update Photo Profile</string>
+    <string name="text_update_photo">Upload Photo</string>
+    <string name="text_galery">From galery</string>
     <string name="text_name">Name</string>
     <string name="text_city">City</string>
     <string name="text_rating">4.5</string>
@@ -45,9 +50,10 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="text_story">Ceritakan Keinginan mu!</string>
     <string name="text_result">Result</string>
-    <string name="text_change_password">Change Password</string>
+    <string name="text_change_password">Update Password</string>
     <string name="text_change_language">Change Language</string>
-    <string name="text_change_your_password">Change Your Password</string>
+    <string name="text_change_your_password">Update Your Password</string>
+    <string name="text_change_your_photo">Update Your Photo Profile</string>
     <string name="text_old_password">Old Password</string>
     <string name="text_new_password">New Password</string>
     <string name="text_change_password_same">The old password and the new password are the same!</string>

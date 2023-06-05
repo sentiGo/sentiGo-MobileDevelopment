@@ -1,6 +1,7 @@
 package com.sentigo.bangkit.sentigoapp.data.remote.api
 
 import com.sentigo.bangkit.sentigoapp.data.remote.response.*
+import okhttp3.MultipartBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -52,5 +53,12 @@ interface ApiService {
         @Path("id") id: Int,
         @Field("oldPassword") oldPass: String?,
         @Field("newPassword") newPass: String?
+    ) : RegisterResponse
+
+    @Multipart
+    @PUT("changePhoto/{id_user}")
+    suspend fun updatePhotoProfile(
+        @Header("Authorization") token: String,
+        @Part file: MultipartBody.Part,
     ) : RegisterResponse
 }

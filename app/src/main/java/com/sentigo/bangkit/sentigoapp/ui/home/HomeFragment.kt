@@ -73,6 +73,7 @@ class HomeFragment : Fragment() {
                     }
 
                     is Result.Success -> {
+                        // TODO : Tambah pengecekan kalau API nya sudah dipanggil biar ga reload2 terus
                         binding.progressBar.visibility = View.GONE
                         setDestinasiData(list.data)
                     }

@@ -11,6 +11,7 @@ import com.sentigo.bangkit.sentigoapp.data.remote.response.*
 import com.sentigo.bangkit.sentigoapp.di.Result
 import com.sentigo.bangkit.sentigoapp.model.UserModel
 import com.sentigo.bangkit.sentigoapp.model.UserPreferences
+import okhttp3.MultipartBody
 import org.json.JSONObject
 import retrofit2.HttpException
 
@@ -37,6 +38,9 @@ class AppRepository(
 
     private val _changePasswordUserResponse = MutableLiveData<Result<RegisterResponse>>(Result.Loading)
     val changePasswordUserResponse: LiveData<Result<RegisterResponse>> get() = _changePasswordUserResponse
+
+    private val _updatePhotoResponse = MutableLiveData<Result<RegisterResponse>>(Result.Loading)
+    val updatePhotoResponse: LiveData<Result<RegisterResponse>> get() = _updatePhotoResponse
 
     suspend fun loginUser(email: String, password: String) {
         _loginResponse.value = Result.Loading
@@ -130,6 +134,19 @@ class AppRepository(
             _changePasswordUserResponse.postValue(error?.getString("message")?.let { Result.Error(it) })
         } catch (e: Exception) {
             _changePasswordUserResponse.value = Result.Error(e.message.toString())
+        }
+    }
+
+    suspend fun updatePhotoProfile(token: String, photo: MultipartBody.Part) {
+        _updatePhotoResponse.value = Result.Loading
+        try {
+            val response = apiService.updatePhotoProfile("Bearer $token", photo)
+            _updatePhotoResponse.value = Result.Success(response)
+        } catch (e: HttpException){
+            val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }
+            _updatePhotoResponse.postValue(error?.getString("message")?.let { Result.Error(it) })
+        } catch (e: Exception) {
+            _updatePhotoResponse.value = Result.Error(e.message.toString())
         }
     }
 

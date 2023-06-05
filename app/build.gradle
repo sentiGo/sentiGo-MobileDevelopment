@@ -80,4 +80,5 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.6.0-alpha01'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0' // circle image
+    implementation 'com.github.chnouman:AwesomeDialog:1.0.5' // dialogs
 }
