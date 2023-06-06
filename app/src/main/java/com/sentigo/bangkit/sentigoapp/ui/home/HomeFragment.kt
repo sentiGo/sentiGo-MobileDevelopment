@@ -51,18 +51,19 @@ class HomeFragment : Fragment() {
         getMyLocation()
 
         homeViewModel.getUser.observe(viewLifecycleOwner) {
-            if (isFirstTime) {
-                isFirstTime = false
-                homeViewModel.getListRatingDestinasi(it.token)
-            }
-
-            binding.btnRating.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) homeViewModel.getListRatingDestinasi(it.token)
-            }
-
-            binding.btnLocation.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) homeViewModel.getListLocationDestinasi(it.token, it.lat, it.lon)
-            }
+//            if (isFirstTime) {
+//                isFirstTime = false
+//                homeViewModel.getListRatingDestinasi(it.token)
+//            }
+//
+//            binding.btnRating.setOnCheckedChangeListener { _, isChecked ->
+//                if (isChecked) homeViewModel.getListRatingDestinasi(it.token)
+//            }
+//
+//            binding.btnLocation.setOnCheckedChangeListener { _, isChecked ->
+//                if (isChecked) homeViewModel.getListLocationDestinasi(it.token, it.lat, it.lon)
+//            }
+            homeViewModel.getListRatingDestinasi(it.token)
         }
 
         homeViewModel.listRatingDestinasi.observe(viewLifecycleOwner) { list ->
