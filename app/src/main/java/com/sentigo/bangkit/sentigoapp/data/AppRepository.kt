@@ -39,8 +39,8 @@ class AppRepository(
     private val _changePasswordUserResponse = MutableLiveData<Result<RegisterResponse>>(Result.Loading)
     val changePasswordUserResponse: LiveData<Result<RegisterResponse>> get() = _changePasswordUserResponse
 
-    private val _updatePhotoResponse = MutableLiveData<Result<RegisterResponse>>(Result.Loading)
-    val updatePhotoResponse: LiveData<Result<RegisterResponse>> get() = _updatePhotoResponse
+    private val _updatePhotoResponse = MutableLiveData<Result<UpdatePhotoResponse>>(Result.Loading)
+    val updatePhotoResponse: LiveData<Result<UpdatePhotoResponse>> get() = _updatePhotoResponse
 
     suspend fun loginUser(email: String, password: String) {
         _loginResponse.value = Result.Loading
@@ -137,10 +137,10 @@ class AppRepository(
         }
     }
 
-    suspend fun updatePhotoProfile(token: String, photo: MultipartBody.Part) {
+    suspend fun updatePhotoProfile(token: String, photo: MultipartBody.Part, id: Int) {
         _updatePhotoResponse.value = Result.Loading
         try {
-            val response = apiService.updatePhotoProfile("Bearer $token", photo)
+            val response = apiService.updatePhotoProfile("Bearer $token", photo, id)
             _updatePhotoResponse.value = Result.Success(response)
         } catch (e: HttpException){
             val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }

@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +30,7 @@ class PhotoProfileFragment : BottomSheetDialogFragment() {
     private val viewModel: ProfilePhotoViewModel by viewModels { factory }
 
     private var token: String = ""
+    private var id = 0
     private var isClick = false
     private var isUploade = false
     private lateinit var finalFile: File
@@ -74,6 +74,7 @@ class PhotoProfileFragment : BottomSheetDialogFragment() {
 
         viewModel.getUserPref.observe(viewLifecycleOwner) {
             token = it.token
+            id = it.id
         }
 
         setupAction()
@@ -101,7 +102,6 @@ class PhotoProfileFragment : BottomSheetDialogFragment() {
 
             val photo = rotatePhoto(myFile)
             finalFile = convertBitmapFile(photo, myFile)
-            Log.d("isGaleryOpen", "Final File : $finalFile")
             setButton(isClick)
             binding.imgProfile.setImageURI(selectedImg)
         }
@@ -140,9 +140,7 @@ class PhotoProfileFragment : BottomSheetDialogFragment() {
             requestImageFile
         )
 
-        Log.d("PhotoProfileFragment", finalFile.name)
-
-        viewModel.updatePhotoProfile(token, imageMultipart)
+        viewModel.updatePhotoProfile(token, imageMultipart, id)
     }
 
     private fun setButton(value: Boolean) {

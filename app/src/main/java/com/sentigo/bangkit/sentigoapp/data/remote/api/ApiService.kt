@@ -60,5 +60,6 @@ interface ApiService {
     suspend fun updatePhotoProfile(
         @Header("Authorization") token: String,
         @Part file: MultipartBody.Part,
-    ) : RegisterResponse
+        @Path("id_user") id: Int
+    ) : UpdatePhotoResponse
 }
