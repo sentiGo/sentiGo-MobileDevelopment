@@ -30,6 +30,9 @@ class AppRepository(
     private val _listHomeDestinasi = MutableLiveData<Result<List<ListDestinasiItem>>>(Result.Loading)
     val listHomeDestinasi: LiveData<Result<List<ListDestinasiItem>>> get() = _listHomeDestinasi
 
+    private val _listLocationDestinasi = MutableLiveData<Result<List<ListDestinasiItem>>>(Result.Loading)
+    val listLocationDestinasi: LiveData<Result<List<ListDestinasiItem>>> get() = _listLocationDestinasi
+
     private val _userResponse = MutableLiveData<Result<UserData>>(Result.Loading)
     val userResponse: LiveData<Result<UserData>> get() = _userResponse
 
@@ -83,15 +86,15 @@ class AppRepository(
     }
 
     suspend fun getListLocationDestinasi(token: String, lat: Double?, lon: Double?) {
-        _listHomeDestinasi.value = Result.Loading
+        _listLocationDestinasi.value = Result.Loading
         try {
             val response = apiService.getLocationDestinasi("Bearer $token", lat, lon)
-            _listHomeDestinasi.value = Result.Success(response.listDestinasi)
+            _listLocationDestinasi.value = Result.Success(response.listDestinasi)
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }
-            _listHomeDestinasi.postValue(error?.getString("message")?.let { Result.Error(it) })
+            _listLocationDestinasi.postValue(error?.getString("message")?.let { Result.Error(it) })
         } catch (e: Exception) {
-            _listHomeDestinasi.value = Result.Error(e.message.toString())
+            _listLocationDestinasi.value = Result.Error(e.message.toString())
         }
     }
 

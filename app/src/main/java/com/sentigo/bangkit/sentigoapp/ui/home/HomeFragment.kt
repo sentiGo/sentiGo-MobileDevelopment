@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.sentigo.bangkit.sentigoapp.data.remote.response.ListDestinasiItem
@@ -29,8 +30,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    private var isFirstTime = true
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,25 +44,17 @@ class HomeFragment : Fragment() {
         factory = ViewModelFactory.getInstance(requireActivity())
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
-        val layoutManager = GridLayoutManager(requireActivity(), 2)
+        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvItems.layoutManager = layoutManager
+
+        val layoutManagerLocation = GridLayoutManager(requireActivity(), 2)
+        binding.rvLocation.layoutManager = layoutManagerLocation
 
         getMyLocation()
 
         homeViewModel.getUser.observe(viewLifecycleOwner) {
-//            if (isFirstTime) {
-//                isFirstTime = false
-//                homeViewModel.getListRatingDestinasi(it.token)
-//            }
-//
-//            binding.btnRating.setOnCheckedChangeListener { _, isChecked ->
-//                if (isChecked) homeViewModel.getListRatingDestinasi(it.token)
-//            }
-//
-//            binding.btnLocation.setOnCheckedChangeListener { _, isChecked ->
-//                if (isChecked) homeViewModel.getListLocationDestinasi(it.token, it.lat, it.lon)
-//            }
             homeViewModel.getListRatingDestinasi(it.token)
+            homeViewModel.getListLocationDestinasi(it.token, it.lat, it.lon)
         }
 
         homeViewModel.listRatingDestinasi.observe(viewLifecycleOwner) { list ->
@@ -74,9 +65,28 @@ class HomeFragment : Fragment() {
                     }
 
                     is Result.Success -> {
-                        // TODO : Tambah pengecekan kalau API nya sudah dipanggil biar ga reload2 terus
                         binding.progressBar.visibility = View.GONE
-                        setDestinasiData(list.data)
+                        setDestinasiDataRating(list.data)
+                    }
+
+                    is Result.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(requireActivity(), list.error, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
+        homeViewModel.listLocationDestinasi.observe(viewLifecycleOwner) { list ->
+            if (list != null) {
+                when (list) {
+                    is Result.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+
+                    is Result.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        setDestinasiDataLocation(list.data)
                     }
 
                     is Result.Error -> {
@@ -130,10 +140,16 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setDestinasiData(listDestinasi: List<ListDestinasiItem>) {
+    private fun setDestinasiDataRating(listDestinasi: List<ListDestinasiItem>) {
         val data = ArrayList(listDestinasi)
         val adapter = DestinasiAdapter(data)
         binding.rvItems.adapter = adapter
+    }
+
+    private fun setDestinasiDataLocation(listDestinasi: List<ListDestinasiItem>) {
+        val data = ArrayList(listDestinasi)
+        val adapter = DestinasiAdapter(data)
+        binding.rvLocation.adapter = adapter
     }
 
     private fun showToast(message: String) {

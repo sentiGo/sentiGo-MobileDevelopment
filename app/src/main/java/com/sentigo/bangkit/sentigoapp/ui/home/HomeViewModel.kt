@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private val repo: AppRepository) : ViewModel() {
 
     val listRatingDestinasi: LiveData<Result<List<ListDestinasiItem>>> = repo.listHomeDestinasi
+    val listLocationDestinasi: LiveData<Result<List<ListDestinasiItem>>> = repo.listLocationDestinasi
 
     val getUser = repo.getUserPref()
 
