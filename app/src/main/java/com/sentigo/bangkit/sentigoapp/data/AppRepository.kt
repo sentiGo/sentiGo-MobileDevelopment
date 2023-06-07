@@ -163,6 +163,10 @@ class AppRepository(
         db.deleteFavoriteDb(id)
     }
 
+    suspend fun deleteAllFavorite() {
+        db.deleteAllFav()
+    }
+
     suspend fun saveUserPref(user: UserModel) {
         pref.saveUser(user)
     }

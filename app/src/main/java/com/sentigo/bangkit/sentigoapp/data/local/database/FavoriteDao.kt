@@ -13,6 +13,9 @@ interface FavoriteDao {
     @Query("DELETE FROM favorite_table WHERE id = :id")
     suspend fun deleteFavoriteDb(id: Int)
 
+    @Query("DELETE FROM favorite_table")
+    suspend fun deleteAllFav()
+
     @Query("SELECT * FROM favorite_table")
     fun getFavoriteDb(): LiveData<List<FavoriteEntity>>
 }

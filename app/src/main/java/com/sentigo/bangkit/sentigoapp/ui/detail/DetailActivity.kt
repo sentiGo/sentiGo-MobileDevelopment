@@ -126,6 +126,7 @@ class DetailActivity : AppCompatActivity() {
             "Tempat Nongkrong" -> binding.tvCategory.chipText = "Caffe"
             "Tongkrongan" -> binding.tvCategory.chipText = "Caffe"
             "Tempat Wisata" -> binding.tvCategory.chipText = "Vocation"
+            "tempat wisata" -> binding.tvCategory.chipText = "Vocation"
             "makam pahlawan" -> binding.tvCategory.chipText = "Cemetery"
             "Wisata Edukasi" -> binding.tvCategory.chipText = "Education"
             "Wisata Agro" -> binding.tvCategory.chipText = "Agritourism"

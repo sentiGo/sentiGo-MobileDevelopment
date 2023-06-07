@@ -82,6 +82,7 @@ class ProfileFragment : Fragment() {
                 .body(getString(R.string.text_logout_body))
                 .icon(R.drawable.baseline_error_24)
                 .onPositive(getString(R.string.text_yes), R.color.blue_bg) {
+                    profileViewModel.deleteAllFavorite()
                     profileViewModel.logout()
                 }
                 .onNegative(getString(R.string.text_no), R.color.white, R.color.grey_54)

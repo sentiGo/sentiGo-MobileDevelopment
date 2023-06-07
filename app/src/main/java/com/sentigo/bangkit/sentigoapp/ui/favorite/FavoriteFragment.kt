@@ -7,14 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sentigo.bangkit.sentigoapp.R
 import com.sentigo.bangkit.sentigoapp.data.local.entity.FavoriteEntity
-import com.sentigo.bangkit.sentigoapp.data.remote.response.ListDestinasiItem
 import com.sentigo.bangkit.sentigoapp.databinding.FragmentFavoriteBinding
-import com.sentigo.bangkit.sentigoapp.databinding.FragmentHomeBinding
 import com.sentigo.bangkit.sentigoapp.di.ViewModelFactory
-import com.sentigo.bangkit.sentigoapp.ui.home.DestinasiAdapter
-import com.sentigo.bangkit.sentigoapp.ui.home.HomeViewModel
 
 class FavoriteFragment : Fragment() {
 

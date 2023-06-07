@@ -16,6 +16,12 @@ class ProfileViewModel(private val repo: AppRepository) : ViewModel() {
         }
     }
 
+    fun deleteAllFavorite() {
+        viewModelScope.launch {
+            repo.deleteAllFavorite()
+        }
+    }
+
     fun getUser(token: String, id: Int) {
         viewModelScope.launch {
             repo.getUser(token, id)
