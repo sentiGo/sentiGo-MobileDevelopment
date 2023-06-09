@@ -10,44 +10,40 @@
         android:id="@+id/cardView"
         style="@style/MyCardView"
         android:layout_width="match_parent"
-        android:layout_height="370dp"
-        android:backgroundTint="@color/blue_bg"
+        android:layout_height="250dp"
         app:cardElevation="0dp"
-        android:layout_marginTop="-20dp"
-        app:cardCornerRadius="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/register_image"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:contentDescription="@string/text_login_image"
-            android:layout_gravity="center"
-            android:layout_marginBottom="48dp"
-            android:src="@drawable/travel_show_phone" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/login_register_bg"/>
 
         <TextView
             android:id="@+id/tv_title_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
+            android:textSize="42sp"
             android:textStyle="bold"
+            android:paddingStart="24dp"
+            android:layout_gravity="start|center"
             android:textColor="@color/white"
-            android:layout_marginTop="100dp"
-            android:layout_gravity="center"
-            android:text="Register"/>
+            android:text="@string/text_register"/>
 
         <TextView
             android:id="@+id/tv_second_title"
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginTop="140dp"
+            android:textSize="24sp"
+            android:maxLines="2"
+            android:paddingStart="24dp"
+            android:layout_marginTop="56dp"
             android:textColor="@color/white"
-            android:text="Complete your personal data below"
-            android:layout_gravity="center"/>
+            android:text="@string/text_personal_data"
+            android:layout_gravity="start|center"/>
 
     </androidx.cardview.widget.CardView>
 

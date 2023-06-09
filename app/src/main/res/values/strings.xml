@@ -60,4 +60,6 @@
     <string name="text_change_password_same">The old password and the new password are the same!</string>
     <string name="text_sentigo">sentiGo</string>
     <string name="text_slogan">Start your journey with us.</string>
+    <string name="text_personal_data">Complete your personal data below.</string>
+    <string name="text_register">Register</string>
 </resources>
