@@ -19,6 +19,7 @@ import com.sentigo.bangkit.sentigoapp.data.remote.response.ListDestinasiItem
 import com.sentigo.bangkit.sentigoapp.di.Result
 import com.sentigo.bangkit.sentigoapp.databinding.FragmentHomeBinding
 import com.sentigo.bangkit.sentigoapp.di.ViewModelFactory
+import com.sentigo.bangkit.sentigoapp.di.DataKota
 
 class HomeFragment : Fragment() {
 
@@ -49,6 +50,11 @@ class HomeFragment : Fragment() {
 
         val layoutManagerLocation = GridLayoutManager(requireActivity(), 2)
         binding.rvLocation.layoutManager = layoutManagerLocation
+
+        val layoutManagerCity = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvCity.layoutManager = layoutManagerCity
+
+        binding.rvCity.adapter = CityAdapter(DataKota.getCity())
 
         getMyLocation()
 
