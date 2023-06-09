@@ -70,7 +70,7 @@ class ProfileFragment : Fragment() {
     private fun setUserData(user: UserData) {
         binding.tvEmail.text = user.email
         binding.tvUsername.text = user.username
-        changePhoto(user.img)
+        if (user.img != null) changePhoto(user.img)
     }
 
     private fun setupAction() {

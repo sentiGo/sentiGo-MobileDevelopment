@@ -4,20 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
     tools:context=".ui.register.RegisterActivity">
 
-    <ImageView
-        android:id="@+id/register_image"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:contentDescription="@string/text_login_image"
-        android:src="@drawable/travel_show_phone"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/MyCardView"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:backgroundTint="@color/blue_bg"
+        app:cardElevation="0dp"
+        android:layout_marginTop="-20dp"
+        app:cardCornerRadius="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/register_image"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:contentDescription="@string/text_login_image"
+            android:layout_gravity="center"
+            android:layout_marginBottom="48dp"
+            android:src="@drawable/travel_show_phone" />
+
+        <TextView
+            android:id="@+id/tv_title_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center"
+            android:text="Register"/>
+
+        <TextView
+            android:id="@+id/tv_second_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="140dp"
+            android:textColor="@color/white"
+            android:text="Complete your personal data below"
+            android:layout_gravity="center"/>
+
+    </androidx.cardview.widget.CardView>
 
     <!--  Text View Username  -->
 
@@ -27,9 +59,11 @@
         android:layout_height="wrap_content"
         android:text="@string/text_username"
         android:layout_marginTop="35dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register_image"/>
+        app:layout_constraintTop_toBottomOf="@id/cardView"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_layout_username"
@@ -38,6 +72,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:startIconDrawable="@drawable/baseline_person_24"
         app:layout_constraintVertical_bias="0.0"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +96,8 @@
         android:layout_height="wrap_content"
         android:text="@string/text_email"
         android:layout_marginTop="24dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_layout_username"/>
@@ -72,6 +110,8 @@
         app:startIconDrawable="@drawable/baseline_alternate_email_24"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_email">
@@ -91,6 +131,8 @@
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
         android:text="@string/text_password"
         android:layout_marginTop="24dp"
         app:layout_constraintVertical_bias="0.0"
@@ -105,6 +147,8 @@
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_password">
@@ -127,5 +171,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_layout_password"
         />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

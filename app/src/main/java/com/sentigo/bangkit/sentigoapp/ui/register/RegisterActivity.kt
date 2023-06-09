@@ -3,6 +3,7 @@ package com.sentigo.bangkit.sentigoapp.ui.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.sentigo.bangkit.sentigoapp.R
@@ -18,6 +19,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var factory: ViewModelFactory
     private val registerViewModel: RegisterViewModel by viewModels { factory }
 
+    private var clickBottomRegister = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -30,18 +33,23 @@ class RegisterActivity : AppCompatActivity() {
             if (user != null) {
                 when (user) {
                     is Result.Loading -> {
-                        // loading tampil
+                        if (clickBottomRegister) binding.progressBar.visibility = View.VISIBLE
                     }
 
                     is Result.Success -> {
-                        Toast.makeText(this, user.data.message, Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, LoginActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                        finish()
+                        binding.progressBar.visibility = View.GONE
+                        if (clickBottomRegister && user.data.message == "User Created") {
+                            Toast.makeText(this, user.data.message, Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, LoginActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                            clickBottomRegister = false
+                            finish()
+                        }
                     }
 
                     is Result.Error -> {
+                        binding.progressBar.visibility = View.GONE
                         Toast.makeText(this, user.error, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -62,6 +70,7 @@ class RegisterActivity : AppCompatActivity() {
                 password.isEmpty() -> binding.textLayoutPassword.error = getString(R.string.empty_password)
                 password.length >= 8 -> {
                     registerViewModel.registerUser(username, email, password)
+                    clickBottomRegister = true
                 }
             }
         }
