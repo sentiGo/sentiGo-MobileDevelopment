@@ -1,5 +1,6 @@
 package com.sentigo.bangkit.sentigoapp.ui.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sentigo.bangkit.sentigoapp.databinding.ItemCityBinding
 import com.sentigo.bangkit.sentigoapp.model.City
+import com.sentigo.bangkit.sentigoapp.ui.city.CityActivity
 
 class CityAdapter(
     private val listCity: ArrayList<City>
@@ -38,7 +40,9 @@ class CityAdapter(
             tvCity.text = item.name
 
             itemView.setOnClickListener {
-                Toast.makeText(itemView.context, item.name, Toast.LENGTH_SHORT).show()
+                val intent = Intent(itemView.context, CityActivity::class.java)
+                intent.putExtra(CityActivity.EXTRA_CITY, item.name)
+                itemView.context.startActivity(intent)
             }
         }
     }

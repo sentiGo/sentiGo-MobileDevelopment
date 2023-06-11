@@ -45,6 +45,9 @@ class AppRepository(
     private val _updatePhotoResponse = MutableLiveData<Result<UpdatePhotoResponse>>(Result.Loading)
     val updatePhotoResponse: LiveData<Result<UpdatePhotoResponse>> get() = _updatePhotoResponse
 
+    private val _listCityResponse = MutableLiveData<Result<List<ListDestinasiItem>>>(Result.Loading)
+    val listCityResponse: LiveData<Result<List<ListDestinasiItem>>> get() = _listCityResponse
+
     suspend fun loginUser(email: String, password: String) {
         _loginResponse.value = Result.Loading
         try {
@@ -150,6 +153,19 @@ class AppRepository(
             _updatePhotoResponse.postValue(error?.getString("message")?.let { Result.Error(it) })
         } catch (e: Exception) {
             _updatePhotoResponse.value = Result.Error(e.message.toString())
+        }
+    }
+
+    suspend fun getListCity(token: String, city: String) {
+        _listCityResponse.value = Result.Loading
+        try {
+            val response = apiService.getCityList("Bearer $token", city)
+            _listCityResponse.value = Result.Success(response.listDestinasi)
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }
+            _listCityResponse.postValue(error?.getString("message")?.let { Result.Error(it) })
+        } catch (e: Exception) {
+            _listCityResponse.value = Result.Error(e.message.toString())
         }
     }
 

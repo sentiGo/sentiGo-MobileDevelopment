@@ -62,4 +62,11 @@ interface ApiService {
         @Part file: MultipartBody.Part,
         @Path("id_user") id: Int
     ) : UpdatePhotoResponse
+
+    @FormUrlEncoded
+    @POST("listCity")
+    suspend fun getCityList(
+        @Header("Authorization") token: String,
+        @Field("city") city: String
+    ) : CityResponse
 }

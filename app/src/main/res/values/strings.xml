@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">sentiGo</string>
 
-    <string name="text_login_image">Login image</string>
-    <string name="text_register_image">Register image</string>
     <string name="text_email">Email</string>
     <string name="text_password">Password</string>
     <string name="text_login">Login</string>
@@ -19,23 +17,17 @@
     <string name="empty_email">Enter Email</string>
     <string name="empty_password">Enter Password</string>
     <string name="empty_username">Enter Username</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="text_home">Home</string>
     <string name="text_find">Find</string>
     <string name="text_favorite">Favorite</string>
     <string name="text_profile">Profile</string>
-    <string name="text_setting_button">setting_button</string>
     <string name="text_change_photo_button">Update Photo Profile</string>
     <string name="text_update_photo">Upload Photo</string>
     <string name="text_galery">From galery</string>
     <string name="text_name">Name</string>
     <string name="text_city">City</string>
     <string name="text_rating">4.5</string>
-
-    <string name="text_rating_text">Rating</string>
-    <string name="text_location">Location</string>
 
     <string name="exemple_email">emailmu@mail.com</string>
     <string name="text_title_rekomendasi">Interesting place for you!</string>
@@ -49,7 +41,7 @@
     <string name="text_favorite_place">Your Favorite Place!</string>
     <string name="empty_data">Empty Data</string>
     <string name="title_activity_map">MapActivity</string>
-    <string name="text_story">Ceritakan Keinginan mu!</string>
+    <string name="text_story">Tell me about your desires!</string>
     <string name="text_result">Result</string>
     <string name="text_change_password">Update Password</string>
     <string name="text_change_language">Change Language</string>

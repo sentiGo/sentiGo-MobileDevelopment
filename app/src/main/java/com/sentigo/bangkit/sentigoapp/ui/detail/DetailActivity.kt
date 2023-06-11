@@ -124,6 +124,7 @@ class DetailActivity : AppCompatActivity() {
 
         when (item.category) {
             "Tempat Nongkrong" -> binding.tvCategory.chipText = "Caffe"
+            "Tempat nongkrong" -> binding.tvCategory.chipText = "Caffe"
             "Tongkrongan" -> binding.tvCategory.chipText = "Caffe"
             "Tempat Wisata" -> binding.tvCategory.chipText = "Vocation"
             "tempat wisata" -> binding.tvCategory.chipText = "Vocation"

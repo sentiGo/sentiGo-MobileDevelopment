@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sentigo.bangkit.sentigoapp.data.AppRepository
+import com.sentigo.bangkit.sentigoapp.ui.city.CityViewModel
 import com.sentigo.bangkit.sentigoapp.ui.detail.DetailViewModel
 import com.sentigo.bangkit.sentigoapp.ui.favorite.FavoriteViewModel
 import com.sentigo.bangkit.sentigoapp.ui.find.FindViewModel
@@ -45,6 +46,9 @@ class ViewModelFactory(private val pref: AppRepository) : ViewModelProvider.NewI
             }
             modelClass.isAssignableFrom(ProfilePhotoViewModel::class.java) -> {
                 ProfilePhotoViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(CityViewModel::class.java) -> {
+                CityViewModel(pref) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
