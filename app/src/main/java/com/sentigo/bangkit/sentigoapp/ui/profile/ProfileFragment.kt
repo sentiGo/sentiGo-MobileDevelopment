@@ -1,6 +1,8 @@
 package com.sentigo.bangkit.sentigoapp.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -97,6 +99,10 @@ class ProfileFragment : Fragment(), DialogProfileListener {
 
         binding.btnChangePhoto.setOnClickListener {
             photoProfileBottomSheet!!.show(parentFragmentManager, PhotoProfileFragment.TAG)
+        }
+
+        binding.btnChangeLanguage.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
         }
     }
 

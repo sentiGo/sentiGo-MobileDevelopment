@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/tv_second_title"
-            android:layout_width="280dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:maxLines="2"
