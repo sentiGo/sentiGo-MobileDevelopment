@@ -30,6 +30,11 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textStyle="bold"
+                android:textSize="14sp"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="2"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:layout_margin="8dp"
                 android:layout_gravity="bottom"
                 tools:text="Surabaya"/>

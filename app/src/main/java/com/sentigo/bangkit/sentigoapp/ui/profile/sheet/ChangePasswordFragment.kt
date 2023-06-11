@@ -47,8 +47,8 @@ class ChangePasswordFragment : BottomSheetDialogFragment() {
 
                     is Result.Success -> {
                         binding.progressBar.visibility = View.GONE
+                        Toast.makeText(requireActivity(), response.data.message, Toast.LENGTH_SHORT).show()
                         if (response.data.message == "Password is updated" && clickBottom){
-                            Toast.makeText(requireActivity(), response.data.message, Toast.LENGTH_SHORT).show()
                             clickBottom = false
                             binding.edOldPassword.setText("")
                             binding.edNewPassword.setText("")
@@ -73,7 +73,6 @@ class ChangePasswordFragment : BottomSheetDialogFragment() {
     }
 
     private fun setupAction() {
-        // TODO: tambah error kalau passwordnya kosong
         binding.btnChangePassword.setOnClickListener {
             val oldPassword = binding.edOldPassword.text.toString()
             val newPassword = binding.edNewPassword.text.toString()

@@ -31,7 +31,7 @@
             android:paddingStart="24dp"
             android:layout_gravity="start|center"
             android:textColor="@color/white"
-            android:text="@string/text_register"/>
+            android:text="@string/text_sentigo"/>
 
         <TextView
             android:id="@+id/tv_second_title"
@@ -50,16 +50,29 @@
     <!--  Text View Username  -->
 
     <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_register"
+        android:textSize="28sp"
+        android:textColor="@color/blue_bg"
+        android:layout_marginStart="24dp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView"/>
+
+    <TextView
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_username"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="18dp"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_register"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_layout_username"

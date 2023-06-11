@@ -29,6 +29,8 @@ class PhotoProfileFragment : BottomSheetDialogFragment() {
     private lateinit var factory: ViewModelFactory
     private val viewModel: ProfilePhotoViewModel by viewModels { factory }
 
+    private var dialogProfileListener: DialogProfileListener? = null
+
     private var token: String = ""
     private var id = 0
     private var isClick = false
@@ -60,6 +62,7 @@ class PhotoProfileFragment : BottomSheetDialogFragment() {
                         if (response.data.message == "Photo is updated" && isUploade) {
                             binding.progressBar.visibility = View.GONE
                             Toast.makeText(requireContext(), response.data.message, Toast.LENGTH_SHORT).show()
+                            dialogProfileListener?.onDialogDataRecive("onChangeProfilePicture")
                             dismiss()
                         }
                     }
@@ -154,6 +157,10 @@ class PhotoProfileFragment : BottomSheetDialogFragment() {
             isClick = true
             isUploade = true
         }
+    }
+
+    fun setDialogProfileListener(data: DialogProfileListener) {
+        dialogProfileListener = data
     }
 
     companion object {

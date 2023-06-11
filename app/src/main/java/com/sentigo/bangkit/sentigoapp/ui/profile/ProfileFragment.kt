@@ -13,11 +13,12 @@ import com.sentigo.bangkit.sentigoapp.R
 import com.sentigo.bangkit.sentigoapp.data.remote.response.UserData
 import com.sentigo.bangkit.sentigoapp.di.Result
 import com.sentigo.bangkit.sentigoapp.databinding.FragmentProfileBinding
+import com.sentigo.bangkit.sentigoapp.di.DialogProfileListener
 import com.sentigo.bangkit.sentigoapp.di.ViewModelFactory
 import com.sentigo.bangkit.sentigoapp.ui.profile.sheet.ChangePasswordFragment
 import com.sentigo.bangkit.sentigoapp.ui.profile.sheet.PhotoProfileFragment
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), DialogProfileListener {
 
     private var _binding : FragmentProfileBinding? = null
     private val binding get() = _binding!!
@@ -26,6 +27,7 @@ class ProfileFragment : Fragment() {
     private val profileViewModel: ProfileViewModel by viewModels { factory }
 
     private var photoProfileBottomSheet : PhotoProfileFragment? = null
+    private var changePasswordBottomSheet : ChangePasswordFragment? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,7 +76,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupAction() {
-        val changePasswordBottomSheet = ChangePasswordFragment()
 
         binding.btnLogout.setOnClickListener {
             AwesomeDialog.build(requireActivity())
@@ -91,7 +92,7 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnChangePassword.setOnClickListener {
-            changePasswordBottomSheet.show(parentFragmentManager, ChangePasswordFragment.TAG)
+            changePasswordBottomSheet!!.show(parentFragmentManager, ChangePasswordFragment.TAG)
         }
 
         binding.btnChangePhoto.setOnClickListener {
@@ -101,7 +102,10 @@ class ProfileFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+
         photoProfileBottomSheet = PhotoProfileFragment()
+        photoProfileBottomSheet!!.setDialogProfileListener(this)
+        changePasswordBottomSheet = ChangePasswordFragment()
     }
 
     private fun changePhoto(url: String) {
@@ -109,6 +113,12 @@ class ProfileFragment : Fragment() {
             Glide.with(it)
                 .load(url)
                 .into(binding.profileImage)
+        }
+    }
+
+    override fun onDialogDataRecive(data: String) {
+        profileViewModel.getUserPref.observe(viewLifecycleOwner) { user ->
+            profileViewModel.getUser(user.token, user.id)
         }
     }
 
