@@ -148,7 +148,7 @@ class HomeFragment : Fragment() {
 
     private fun setDestinasiDataRating(listDestinasi: List<ListDestinasiItem>) {
         val data = ArrayList(listDestinasi)
-        val adapter = DestinasiAdapter(data)
+        val adapter = DestinasiAdapter(data.filterNot { it.id == 256 })
         binding.rvItems.adapter = adapter
     }
 

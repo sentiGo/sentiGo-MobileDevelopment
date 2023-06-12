@@ -10,7 +10,7 @@ object DataKota {
 
         listCity.add(
             City(
-                "https://ikbis.ac.id/wp-content/uploads/2021/03/Anda-di-Surabaya-Inilah-Pentingnya-Menggunakan-Konsultan-Pajak-Surabaya-1024x681.jpg",
+                "https://img.okezone.com/content/2022/12/08/337/2722874/ini-5-alasan-kenapa-kota-surabaya-disebut-kota-pahlawan-nWb0plbz3Y.jpg",
                 "Surabaya"
             )
         )
