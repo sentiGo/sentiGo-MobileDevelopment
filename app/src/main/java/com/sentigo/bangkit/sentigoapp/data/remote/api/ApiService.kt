@@ -69,4 +69,11 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Field("city") city: String
     ) : CityResponse
+
+    @FormUrlEncoded
+    @POST("findDestinasi")
+    suspend fun getFindList(
+        @Header("Authorization") token: String,
+        @Field("description") desc: String
+    ) : FindResponse
 }

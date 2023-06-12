@@ -48,6 +48,9 @@ class AppRepository(
     private val _listCityResponse = MutableLiveData<Result<List<ListDestinasiItem>>>(Result.Loading)
     val listCityResponse: LiveData<Result<List<ListDestinasiItem>>> get() = _listCityResponse
 
+    private val _listFindResponse = MutableLiveData<Result<List<ListDestinasiItem>>>(Result.Loading)
+    val listFindResponse: LiveData<Result<List<ListDestinasiItem>>> get() = _listFindResponse
+
     suspend fun loginUser(email: String, password: String) {
         _loginResponse.value = Result.Loading
         try {
@@ -166,6 +169,19 @@ class AppRepository(
             _listCityResponse.postValue(error?.getString("message")?.let { Result.Error(it) })
         } catch (e: Exception) {
             _listCityResponse.value = Result.Error(e.message.toString())
+        }
+    }
+
+    suspend fun getListFind(token: String, desc: String) {
+        _listFindResponse.value = Result.Loading
+        try {
+            val response = apiService.getFindList("Bearer $token", desc)
+            _listFindResponse.value = Result.Success(response.listDestinasi)
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()?.let { JSONObject(it) }
+            _listFindResponse.postValue(error?.getString("message")?.let { Result.Error(it) })
+        } catch (e: Exception) {
+            _listFindResponse.value = Result.Error(e.message.toString())
         }
     }
 

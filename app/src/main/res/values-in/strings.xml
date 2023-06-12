@@ -56,4 +56,6 @@
     <string name="text_personal_data">Lengkapi data pribadi Anda di bawah ini.</string>
     <string name="text_register">Registrasi</string>
     <string name="text_explore_more">Jelajahi Lebih Banyak</string>
+    <string name="text_from_you_need">Berdasarkan Keinginan mu!</string>
+    <string name="text_desc_empty">Kolom deskripsi tidak boleh kosong</string>
 </resources>

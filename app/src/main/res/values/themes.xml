@@ -14,4 +14,13 @@
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
+
+    <style name="Theme.SentigoApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.SentigoApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.SentigoApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
