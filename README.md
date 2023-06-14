@@ -33,7 +33,7 @@
         ```
         https://github.com/sentiGo/sentiGo-MobileDevelopment.git
         ``` 
-      - Enter Your API in ``local.properties``
+      - Enter Your API KEY in ``local.properties``
         ```
         GOOGLE_MAPS_API_KEY=your_maps_api_key
         ```
