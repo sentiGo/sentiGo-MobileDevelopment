@@ -2,8 +2,7 @@
 <p>The source code of Android app of sentiGo using Kotlin in order to complete The Bangkit academy 2023 Capstone Project.</p>
 
 - ### Architecture for this project
-  ![architecture drawio](https://github.com/sentiGo/sentiGo-MobileDevelopment/assets/70699971/77ec0352-9406-4d3a-b058-e7e7b8004d9e)
-
+  <img src="https://github.com/sentiGo/sentiGo-MobileDevelopment/assets/70699971/77ec0352-9406-4d3a-b058-e7e7b8004d9e" width="550"/>
 
 - ### Feature
   - **Login**, Allows a user to gain access to an application by entering their email and password.
