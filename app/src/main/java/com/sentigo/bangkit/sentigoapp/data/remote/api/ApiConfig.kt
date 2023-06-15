@@ -5,6 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.sentigo.bangkit.sentigoapp.BuildConfig
+import java.util.concurrent.TimeUnit
 
 class ApiConfig {
     companion object {
@@ -17,6 +18,8 @@ class ApiConfig {
 
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
                 .build()
 
             val retrofit = Retrofit.Builder()
