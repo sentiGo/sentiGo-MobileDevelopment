@@ -1,6 +1,12 @@
 ## Mobile Development Documentation
 <p>The source code of Android app of sentiGo using Kotlin in order to complete The Bangkit academy 2023 Capstone Project.</p>
 
+
+
+https://github.com/sentiGo/sentiGo-MobileDevelopment/assets/70699971/e6ab12ee-a07f-464a-96c2-a6c5ff160610
+
+
+
 - ### Architecture for this project
   <img src="https://github.com/sentiGo/sentiGo-MobileDevelopment/assets/70699971/77ec0352-9406-4d3a-b058-e7e7b8004d9e" width="550"/>
 
