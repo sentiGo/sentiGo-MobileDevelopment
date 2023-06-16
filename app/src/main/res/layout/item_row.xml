@@ -43,6 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/text_name"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:lines="1"
                     android:textAppearance="?attr/textAppearanceTitleMedium"/>
@@ -52,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/text_city"
+                    android:textColor="@color/black"
                     android:textAppearance="?attr/textAppearanceBodyMedium"/>
 
                 <LinearLayout
@@ -71,6 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="@string/text_rating"
+                        android:textColor="@color/black"
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="2dp"
                         android:textAppearance="?attr/textAppearanceBodyMedium"/>
